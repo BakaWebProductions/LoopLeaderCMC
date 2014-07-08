@@ -1,0 +1,20 @@
+﻿@model LoopLeader.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "ProductIndex";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+
+<h2>Product Administration</h2>
+Select the product to modify:<br />
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(model => model.ProductList.First().ProductID, new SelectList(Model.ProductList.AsEnumerable(), "ProductID", "ProductName"))
+    <br />
+    <br />
+    <input type="submit" value="Edit" />
+}
+
+<h3>Or add a product to the database:</h3>
+@Html.ActionLink("Add a product", "CreateProduct")
